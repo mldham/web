@@ -52,11 +52,11 @@ $metode = isset($_POST['payment']) ? $_POST['payment'] : "";
 $user_id = $_SESSION['user_id'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $alamatkirim = filter_input(INPUT_POST, 'alamatkirim', FILTER_SANITIZE_STRING);
-    $kurir = filter_input(INPUT_POST, 'kurir', FILTER_SANITIZE_STRING);
-    $payment = filter_input(INPUT_POST, 'payment', FILTER_SANITIZE_STRING);
+    // $alamatkirim = filter_input(INPUT_POST, 'alamatkirim', FILTER_SANITIZE_STRING);
+    // $kurir = filter_input(INPUT_POST, 'kurir', FILTER_SANITIZE_STRING);
+    // $payment = filter_input(INPUT_POST, 'payment', FILTER_SANITIZE_STRING);
 
-    $selected_products = array();
+    $selected_products = [];
 
     if (isset($_POST['Menu1']) && $_POST['Menu1'] == 'Bakso Biasa') {
         $selected_products[] = 1;
@@ -78,14 +78,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $selected_products[] = 5;
     }
 
-
-
-
     if (empty($selected_products)) {
         echo "Pilih setidaknya satu produk.";
     } else {
-
         $conn->begin_transaction();
+
+        $query = "INSERT INTO pemesanan ( no_user, alamat, pengiriman, payment, total_bayar) VALUES ( ?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("issss", $user_id, $alamatkirim, $kurir, $payment, $totalMenu);
+        if ($stmt->execute()) {
+            echo "Query berhasil dieksekusi.";
+        } else {
+            echo "Terjadi kesalahan saat menyimpan data pesanan ke dalam database: " . $stmt->error;
+            $conn->rollback();
+        }
+
+        $last_id = $conn->insert_id;
 
         foreach ($selected_products as $product_id) {
             if ($product_id === 1) { // Bakso Biasa
@@ -109,21 +117,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $harga = 5000;
                 $total = $harga * $jumlah5;
             }
-            $query = "INSERT INTO pemesanan ( no_user, alamat, pengiriman, payment, total_bayar) VALUES ( ?, ?, ?, ?, ?)";
-            $stmt = $conn->prepare($query);
-            $stmt->bind_param("issss", $user_id, $alamatkirim, $kurir, $payment, $totalMenu);
 
-                $query = "INSERT INTO detail_pesanan (no_user,no_produk , jumlah , harga, total_harga) VALUES ( ?, ?, ?, ?, ?)";
-                $stmt = $conn->prepare($query);
-                $stmt->bind_param("iisss", $user_id, $product_id, $jumlah, $harga, $total);
-        
-            
+            $query = "INSERT INTO detail_pesanan (pesanan_id, produk_id , jumlah , harga, total_harga) VALUES ( ?, ?, ?, ?, ?)";
+            $stmt = $conn->prepare($query);
+            $stmt->bind_param("iisss", $last_id, $product_id, $jumlah, $harga, $total);
             if ($stmt->execute()) {
                 echo "Query berhasil dieksekusi.";
             } else {
                 echo "Terjadi kesalahan saat menyimpan data pesanan ke dalam database: " . $stmt->error;
                 $conn->rollback();
-                break;
             }
         }
 
