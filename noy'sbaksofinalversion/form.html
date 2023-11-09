@@ -74,56 +74,6 @@
       </div>
       <br>
 
-      <script>
-        function toggleInputBox(checkbox, inputBoxId) {
-          var inputBox = document.querySelector("." + inputBoxId);
-          inputBox.style.display = checkbox.checked ? "block" : "none";
-        }
-
-        document.getElementById("Menu1").addEventListener("change", function () {
-          toggleInputBox(this, "Menu1");
-        });
-        document.getElementById("Menu2").addEventListener("change", function () {
-          toggleInputBox(this, "Menu2");
-        });
-        document.getElementById("Menu3").addEventListener("change", function () {
-          toggleInputBox(this, "Menu3");
-        });
-        document.getElementById("Menu4").addEventListener("change", function () {
-          toggleInputBox(this, "Menu4");
-        });
-        document.getElementById("Menu5").addEventListener("change", function () {
-          toggleInputBox(this, "Menu5");
-        });
-
-        const icons = document.querySelectorAll('.icon');
-        icons.forEach(icon => {
-          icon.addEventListener('click', (event) => {
-            icon.classList.toggle("open");
-
-            // Tambahkan kode untuk mengatur tampilan ul.menu-list
-            const menuList = document.querySelector(".menu-list");
-            const wrapper = document.querySelector('.wrapper');
-
-            if (icon.classList.contains("open")) {
-              // Ketika ikon hamburger di klik, sembunyikan ul.menu-list dan aktifkan kelas "active" pada wrapper
-              menuList.style.display = "none";
-              wrapper.classList.add("active");
-            } else {
-              // Ketika ikon hamburger diklik lagi, tampilkan ul.menu-list dan hilangkan kelas "active" pada wrapper
-              menuList.style.display = "block";
-              wrapper.classList.remove("active");
-            }
-          });
-        });
-
-      </script>
-
-      <script type="text/javascript">
-        const toggleMenu = () =>
-          document.body.classList.toggle("open");
-      </script>
-
       <div class="alamatkirim">
         <h2>Alamat:</h2>
         <input type="text" name="alamatkirim">
@@ -149,14 +99,15 @@
           <h4>Pilih Metode Pembayaran</h4>
         </div>
 
-        <input type="radio" name="payment" id="COD" value="COD">
-        <input type="radio" name="payment" id="linkaja" value="linkaja">
-        <input type="radio" name="payment" id="shopeepay" value="shopeepay">
-        <input type="radio" name="payment" id="gopay" value="gopay">
-        <input type="radio" name="payment" id="dana" value="dana">
+        <input type="hidden" name="payment_method" id="payment_method">
+        <input type="radio" name="payment" id="COD" value="COD" onchange="selectedPayment('COD')">
+        <input type="radio" name="payment" id="linkaja" value="linkaja" onchange="selectedPayment('Link Aja')">
+        <input type="radio" name="payment" id="shopeepay" value="shopeepay" onchange="selectedPayment('Shopee Pay')">
+        <input type="radio" name="payment" id="gopay" value="gopay" onchange="selectedPayment('GoPay')">
+        <input type="radio" name="payment" id="dana" value="dana" onchange="selectedPayment('Dana')">
 
         <div class="category">
-          <label for="COD" class="CODMetode">
+          <label for="COD" class="CODMetode" onchange="selectedPayment('COD')">
             <div class="imgName">
               <div class="imgContainer COD">
                 <img src="img/cod.png" alt="">
@@ -166,7 +117,7 @@
             <span class="check"><i class="fa-solid fa-circle-check" style="color: #6064b6;"></i></span>
           </label>
 
-          <label for="linkaja" class="linkajaMetode">
+          <label for="linkaja" class="linkajaMetode" onchange="selectedPayment('Link Aja')">
             <div class="imgName">
               <div class="imgContainer linkaja">
                 <img src="img/linkaja.png" alt="">
@@ -176,7 +127,7 @@
             <span class="check"><i class="fa-solid fa-circle-check" style="color: #6064b6;"></i></span>
           </label>
 
-          <label for="shopeepay" class="shopeepayMetode">
+          <label for="shopeepay" class="shopeepayMetode" onchange="selectedPayment('Shopee Pay')">
             <div class="imgName">
               <div class="imgContainer shopeepay">
                 <img src="img/shopeepay.png" alt="">
@@ -186,7 +137,7 @@
             <span class="check"><i class="fa-solid fa-circle-check" style="color: #6064b6;"></i></span>
           </label>
 
-          <label for="gopay" class="gopayMetode">
+          <label for="gopay" class="gopayMetode" onchange="selectedPayment('GoPay')">
             <div class="imgName">
               <div class="imgContainer gopay">
                 <img src="img/Gopay.png" alt="">
@@ -196,7 +147,7 @@
             <span class="check"><i class="fa-solid fa-circle-check" style="color: #6064b6;"></i></span>
           </label>
 
-          <label for="dana" class="danaMetode">
+          <label for="dana" class="danaMetode" onchange="selectedPayment('Dana')">
             <div class="imgName">
               <div class="imgContainer dana">
                 <img src="img/dana.png" alt="">
@@ -241,3 +192,57 @@
 </body>
 
 </html>
+
+<script>
+  function toggleInputBox(checkbox, inputBoxId) {
+    var inputBox = document.querySelector("." + inputBoxId);
+    inputBox.style.display = checkbox.checked ? "block" : "none";
+  }
+
+  document.getElementById("Menu1").addEventListener("change", function () {
+    toggleInputBox(this, "Menu1");
+  });
+  document.getElementById("Menu2").addEventListener("change", function () {
+    toggleInputBox(this, "Menu2");
+  });
+  document.getElementById("Menu3").addEventListener("change", function () {
+    toggleInputBox(this, "Menu3");
+  });
+  document.getElementById("Menu4").addEventListener("change", function () {
+    toggleInputBox(this, "Menu4");
+  });
+  document.getElementById("Menu5").addEventListener("change", function () {
+    toggleInputBox(this, "Menu5");
+  });
+
+  const icons = document.querySelectorAll('.icon');
+  icons.forEach(icon => {
+    icon.addEventListener('click', (event) => {
+      icon.classList.toggle("open");
+
+      // Tambahkan kode untuk mengatur tampilan ul.menu-list
+      const menuList = document.querySelector(".menu-list");
+      const wrapper = document.querySelector('.wrapper');
+
+      if (icon.classList.contains("open")) {
+        // Ketika ikon hamburger di klik, sembunyikan ul.menu-list dan aktifkan kelas "active" pada wrapper
+        menuList.style.display = "none";
+        wrapper.classList.add("active");
+      } else {
+        // Ketika ikon hamburger diklik lagi, tampilkan ul.menu-list dan hilangkan kelas "active" pada wrapper
+        menuList.style.display = "block";
+        wrapper.classList.remove("active");
+      }
+    });
+  });
+
+  function selectedPayment(paymentMethode) {
+    document.getElementById("payment_method").value = paymentMethode;
+  }
+
+</script>
+
+<script type="text/javascript">
+  const toggleMenu = () =>
+    document.body.classList.toggle("open");
+</script>

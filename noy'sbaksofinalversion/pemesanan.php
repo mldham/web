@@ -36,6 +36,7 @@ $totalMenu = $total1 + $total2 + $total3 + $total4 + $total5;
 
 $alamat = isset($_POST['alamatkirim']) ? $_POST['alamatkirim'] : "";
 $kurir = isset($_POST['kurir']) ? $_POST['kurir'] : "";
+$payment = isset($_POST['payment']) ? $_POST['payment'] : "";
 
 $biayaKurir = 0;
 
@@ -52,10 +53,6 @@ $metode = isset($_POST['payment']) ? $_POST['payment'] : "";
 $user_id = $_SESSION['user_id'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // $alamatkirim = filter_input(INPUT_POST, 'alamatkirim', FILTER_SANITIZE_STRING);
-    // $kurir = filter_input(INPUT_POST, 'kurir', FILTER_SANITIZE_STRING);
-    // $payment = filter_input(INPUT_POST, 'payment', FILTER_SANITIZE_STRING);
-
     $selected_products = [];
 
     if (isset($_POST['Menu1']) && $_POST['Menu1'] == 'Bakso Biasa') {
@@ -85,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $query = "INSERT INTO pemesanan ( no_user, alamat, pengiriman, payment, total_bayar) VALUES ( ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param("issss", $user_id, $alamatkirim, $kurir, $payment, $totalMenu);
+        $stmt->bind_param("issss", $user_id, $alamat, $kurir, $payment, $totalMenu);
         if ($stmt->execute()) {
             echo "Query berhasil dieksekusi.";
         } else {
