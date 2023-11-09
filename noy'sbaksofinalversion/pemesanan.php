@@ -80,9 +80,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $conn->begin_transaction();
 
-        $query = "INSERT INTO pemesanan ( no_user, alamat, pengiriman, payment, total_bayar) VALUES ( ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO pemesanan ( no_user, alamat, pengiriman, ongkir, payment, total_bayar) VALUES ( ? , ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param("issss", $user_id, $alamat, $kurir, $payment, $totalMenu);
+        $stmt->bind_param("ississ", $user_id, $alamat, $kurir, $biayaKurir, $payment, $totalMenu);
         if ($stmt->execute()) {
             echo "Query berhasil dieksekusi.";
         } else {
@@ -129,7 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->close();
 
         $conn->commit();
-
+        header('Location: detail_pesanan.php'); 
         exit();
     }
 }
