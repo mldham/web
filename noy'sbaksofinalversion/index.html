@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Noy's Bakso</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body class="formpage">
+  <div id="loading-screen">
+    <img src="img/bakso.png" alt="Loading...">
+    <label>NOY'S BAKSO</label>
+  </div>
+
+  <div class="isicontent">
+    <header>
+      <nav class="menu">
+        <img src="img/bakso.png" alt="" width="80">
+        <label><span style="color: #ffb700;">NOY'S</span> BAKSO</label>
+        <ul>
+          <li><a href="index.html">home</a></li>
+          <li><a href="info.html">Information</a></li>
+          <li><a href="https://wa.me/+6281217981811" target="_blank">contact us</a></li>
+          <li><a href="about.html">about us</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="slides">
+      <div class="slide">
+        <img src="img/banner.png" alt="Gambar 6">
+      </div>
+      <div class="slide">
+        <img src="img/img1.png" alt="Gambar 1">
+      </div>
+      <div class="slide">
+        <img src="img/img2.png" alt="Gambar 2">
+      </div>
+      <div class="slide">
+        <img src="img/img3.png" alt="Gambar 3">
+      </div>
+      <div class="slide">
+        <img src="img/img4.png" alt="Gambar 4">
+      </div>
+      <div class="slide">
+        <img src="img/img5.png" alt="Gambar 5">
+      </div>
+      <div class="slide">
+        <img src="img/promo.jpg" alt="Gambar 7">
+      </div>
+      <div class="navigation">
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      </div>
+    </div>
+    <script class="slider">
+      var slideIndex = 1;
+      showSlides(slideIndex);
+
+      function plusSlides(n) {
+        clearTimeout(autoSlideTimeout);
+        showSlides((slideIndex += n));
+      }
+
+      function currentSlide(n) {
+        clearTimeout(autoSlideTimeout);
+        showSlides((slideIndex = n));
+      }
+
+      function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("slide");
+
+        if (n > slides.length) {
+          slideIndex = 1;
+        }
+        if (n < 1) {
+          slideIndex = slides.length;
+        }
+
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+
+        slides[slideIndex - 1].style.display = "block";
+
+        autoSlideTimeout = setTimeout(function () {
+          plusSlides(1);
+        }, 3000);
+      }
+
+      var autoSlideTimeout;
+
+      autoSlideTimeout = setTimeout(function () {
+        plusSlides(1);
+      }, 3000);
+    </script>
+    <script class="loading-screen">
+      window.addEventListener('load', function () {
+        var loadingScreen = document.getElementById('loading-screen');
+        loadingScreen.style.opacity = '0';
+        setTimeout(function () {
+          loadingScreen.style.display = 'none';
+
+          var isicontent = document.querySelector('.isicontent');
+          isicontent.style.display = 'block';
+        }, 2000);
+
+      });
+
+    </script>
+
+    <div class="judul">
+      <h1 style="color:#ffb700">NOY'S <span style="color: red;">BAKSO</span></h1>
+      <h4>Depan Angga's Haircut,Ds Ringinpitu</h4>
+      <h4>Buka Jam 12.00 - 20.00</h4>
+    </div>
+
+    <div class="judmenu">
+      <h1>MENU</h1>
+    </div>
+
+    <div class="content-menu">
+      <div class="img-1">
+        <label>Bakso Biasa</label><br><br>
+        <img src="img/BaksoBiasa.jpg" alt="" width="200">
+        <p>Rp7000</p>
+        <div class="image-link">
+          <a href="form.html" data-checkbox-id="Menu1">Pesan</a>
+        </div>
+      </div>
+      <div class="img-2">
+        <label>Bakso Jumbo</label><br><br>
+        <img src="img/baksojumbo.jpg" alt="" width="200">
+        <p>Rp12000</p>
+        <div class="image-link">
+          <a href="form.html" data-checkbox-id="Menu2">Pesan</a>
+        </div>
+      </div>
+      <div class="img-3">
+        <label>Bakso Urat</label><br><br>
+        <img src="img/baksourat" alt="" width="200">
+        <p>Rp7000</p>
+        <div class="image-link">
+          <a href="form.html" data-checkbox-id="Menu3">Pesan</a>
+        </div>
+      </div>
+      <div class="img-4">
+        <label>Joshua</label><br><br>
+        <img src="img/joshua.jpeg" alt="" width="200" height="150">
+        <p>Rp5000</p>
+        <div class="image-link">
+          <a href="form.html" data-checkbox-id="Menu4">Pesan</a>
+        </div>
+      </div>
+      <div class="img-5">
+        <label>Es Degan</label><br><br>
+        <img src="img/esdegan.jpg" alt="" width="200" height="150">
+        <p>Rp5000</p>
+        <div class="image-link">
+          <a href="form.html" data-checkbox-id="Menu5">Pesan</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="butform">
+      <a href="form.html"><button>Pesan Di Sini</button></a>
+    </div>
+
+
+    <footer>
+      <div class="footer">
+        <div class="imgbakso">
+          <img src="img/bakso.png" alt="" width="120">
+        </div>
+        <h2>NOY'S BAKSO</h2>
+        <div class="footer-content">
+          <div class="location">
+            <p class="wa"><a href="https://wa.me/+6281217981811" target="_blank"><img src="img/wa.png" alt=""
+                  width="22">+6281217981811
+            </p></a>
+            <p class="instagram"><a href="#" target="_blank"><img src="img/instagramicon.png" alt=""
+                  width="22">@NoyzBakso</p></a>
+            <p class="map"><a href="#" target="_blank"><img src="img/map.png" alt="" width="18">Depan Angga's Haircut,Ds
+                Ringinpitu</p></a>
+          </div>
+          <h4>Available at</h4>
+          <div class="logo">
+            <p class="shopee"><a href="#" target="_blank"><img src="img/shopeehp.png" alt="" width="30"></p></a>
+            <p class="gojek"><a href="#" target="_blank"><img src="img/gojek.png" alt="" width="45"></p></a>
+            <p class="grab"><a href="#" target="_blank"><img src="img/grab.png" alt="" width="60"></p></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+
+</html>

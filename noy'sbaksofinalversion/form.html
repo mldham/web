@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Noy's Bakso</title>
+</head>
+
+<body class="formpage">
+  <nav class="menu">
+    <img src="img/bakso.png" alt="" width="80">
+    <label><span style="color: #ffb700;">NOY'S</span> BAKSO</label>
+    <ul>
+      <li><a href="index.html">home</a></li>
+      <li><a href="info.html">Information</a></li>
+      <li><a href="https://wa.me/+6281217981811" target="_blank">contact us</a></li>
+      <li><a href="about.html">about us</a></li>
+    </ul>
+  </nav>
+
+  <div class="form">
+    <form id="formbakso" action="pemesanan.php" method="post">
+      <h2>Pilih Menu:</h2>
+      <div class="checkbox-">
+        <label for="Menu1">
+          <input type="checkbox" class="checkbox" name="Menu1" value="Bakso Biasa" id="Menu1"> Bakso Biasa
+        </label><br>
+        <div class="input-box Menu1">
+          <label for="Jumlah1">Jumlah:</label>
+          <input type="number" id="Jumlah1" name="Jumlah1" min="1" max="200">
+        </div>
+      </div>
+
+      <div class="checkbox-">
+        <label for="Menu2">
+          <input type="checkbox" class="checkbox" name="Menu2" value="Bakso Jumbo" id="Menu2"> Bakso Jumbo
+        </label><br>
+        <div class="input-box Menu2">
+          <label for="Jumlah2">Jumlah:</label>
+          <input type="number" id="Jumlah2" name="Jumlah2" min="1" max="200">
+        </div>
+      </div>
+
+      <div class="checkbox-">
+        <label for="Menu3">
+          <input type="checkbox" class="checkbox" name="Menu3" value="Bakso Urat" id="Menu3"> Bakso Urat
+        </label><br>
+        <div class="input-box Menu3">
+          <label for="Jumlah3">Jumlah:</label>
+          <input type="number" id="Jumlah3" name="Jumlah3" min="1" max="200">
+        </div>
+      </div>
+
+      <div class="checkbox-">
+        <label for="Menu4">
+          <input type="checkbox" class="checkbox" name="Menu4" value="Joshua" id="Menu4"> Joshua
+        </label><br>
+        <div class="input-box Menu4">
+          <label for="Jumlah4">Jumlah:</label>
+          <input type="number" id="Jumlah4" name="Jumlah4" min="1" max="200">
+        </div>
+      </div>
+
+      <div class="checkbox-">
+        <label for="Menu5">
+          <input type="checkbox" class="checkbox" name="Menu5" value="Es Degan" id="Menu5"> Es Degan
+        </label><br>
+        <div class="input-box Menu5">
+          <label for="Jumlah5">Jumlah:</label>
+          <input type="number" id="Jumlah5" name="Jumlah5" min="1" max="200">
+        </div>
+      </div>
+      <br>
+
+      <script>
+        function toggleInputBox(checkbox, inputBoxId) {
+          var inputBox = document.querySelector("." + inputBoxId);
+          inputBox.style.display = checkbox.checked ? "block" : "none";
+        }
+
+        document.getElementById("Menu1").addEventListener("change", function () {
+          toggleInputBox(this, "Menu1");
+        });
+        document.getElementById("Menu2").addEventListener("change", function () {
+          toggleInputBox(this, "Menu2");
+        });
+        document.getElementById("Menu3").addEventListener("change", function () {
+          toggleInputBox(this, "Menu3");
+        });
+        document.getElementById("Menu4").addEventListener("change", function () {
+          toggleInputBox(this, "Menu4");
+        });
+        document.getElementById("Menu5").addEventListener("change", function () {
+          toggleInputBox(this, "Menu5");
+        });
+
+        const icons = document.querySelectorAll('.icon');
+        icons.forEach(icon => {
+          icon.addEventListener('click', (event) => {
+            icon.classList.toggle("open");
+
+            // Tambahkan kode untuk mengatur tampilan ul.menu-list
+            const menuList = document.querySelector(".menu-list");
+            const wrapper = document.querySelector('.wrapper');
+
+            if (icon.classList.contains("open")) {
+              // Ketika ikon hamburger di klik, sembunyikan ul.menu-list dan aktifkan kelas "active" pada wrapper
+              menuList.style.display = "none";
+              wrapper.classList.add("active");
+            } else {
+              // Ketika ikon hamburger diklik lagi, tampilkan ul.menu-list dan hilangkan kelas "active" pada wrapper
+              menuList.style.display = "block";
+              wrapper.classList.remove("active");
+            }
+          });
+        });
+
+      </script>
+
+      <script type="text/javascript">
+        const toggleMenu = () =>
+          document.body.classList.toggle("open");
+      </script>
+
+      <div class="alamatkirim">
+        <h2>Alamat:</h2>
+        <input type="text" name="alamatkirim">
+      </div>
+
+      <div class="kurir">
+        <h2>Pengiriman:</h2>
+        <select name="kurir" id="kurir">
+          <option value="Gojek">Gojek - Rp12000</option>
+          <option value="Grab">Grab - Rp14000</option>
+          <option value="Shopee">Shopee - Rp10000</option>
+        </select>
+      </div>
+
+      <br><br><br>
+
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+      <div class="container">
+        <div class="title">
+          <h4>Pilih Metode Pembayaran</h4>
+        </div>
+
+        <input type="radio" name="payment" id="COD" value="COD">
+        <input type="radio" name="payment" id="linkaja" value="linkaja">
+        <input type="radio" name="payment" id="shopeepay" value="shopeepay">
+        <input type="radio" name="payment" id="gopay" value="gopay">
+        <input type="radio" name="payment" id="dana" value="dana">
+
+        <div class="category">
+          <label for="COD" class="CODMetode">
+            <div class="imgName">
+              <div class="imgContainer COD">
+                <img src="img/cod.png" alt="">
+              </div>
+              <span class="name">COD</span>
+            </div>
+            <span class="check"><i class="fa-solid fa-circle-check" style="color: #6064b6;"></i></span>
+          </label>
+
+          <label for="linkaja" class="linkajaMetode">
+            <div class="imgName">
+              <div class="imgContainer linkaja">
+                <img src="img/linkaja.png" alt="">
+              </div>
+              <span class="name">linkaja</span>
+            </div>
+            <span class="check"><i class="fa-solid fa-circle-check" style="color: #6064b6;"></i></span>
+          </label>
+
+          <label for="shopeepay" class="shopeepayMetode">
+            <div class="imgName">
+              <div class="imgContainer shopeepay">
+                <img src="img/shopeepay.png" alt="">
+              </div>
+              <span class="name">Shopeepay</span>
+            </div>
+            <span class="check"><i class="fa-solid fa-circle-check" style="color: #6064b6;"></i></span>
+          </label>
+
+          <label for="gopay" class="gopayMetode">
+            <div class="imgName">
+              <div class="imgContainer gopay">
+                <img src="img/Gopay.png" alt="">
+              </div>
+              <span class="name">Gopay</span>
+            </div>
+            <span class="check"><i class="fa-solid fa-circle-check" style="color: #6064b6;"></i></span>
+          </label>
+
+          <label for="dana" class="danaMetode">
+            <div class="imgName">
+              <div class="imgContainer dana">
+                <img src="img/dana.png" alt="">
+              </div>
+              <span class="name">Dana</span>
+            </div>
+            <span class="check"><i class="fa-solid fa-circle-check" style="color: #6064b6;"></i></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="submit">
+        <input type="submit" name="submit" id="submit" value="Pesan">
+      </div>
+    </form>
+  </div>
+  <footer>
+    <div class="footer">
+      <div class="imgbakso">
+        <img src="img/bakso.png" alt="" width="120">
+      </div>
+      <h2>NOY'S BAKSO</h2>
+      <div class="footer-content">
+        <div class="location">
+          <p class="wa"><a href="https://wa.me/+6281217981811" target="_blank"><img src="img/wa.png" alt=""
+                width="22">+6281217981811
+          </p></a>
+          <p class="instagram"><a href="#" target="_blank"><img src="img/instagramicon.png" alt="" width="22">@NoyzBakso
+          </p></a>
+          <p class="map"><a href="#" target="_blank"><img src="img/map.png" alt="" width="18">Depan Angga's Haircut,Ds
+              Ringinpitu</p></a>
+        </div>
+        <h4>Available at</h4>
+        <div class="logo">
+          <p class="shopee"><a href="#" target="_blank"><img src="img/shopeehp.png" alt="" width="30"></p></a>
+          <p class="gojek"><a href="#" target="_blank"><img src="img/gojek.png" alt="" width="45"></p></a>
+          <p class="grab"><a href="#" target="_blank"><img src="img/grab.png" alt="" width="60"></p></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

@@ -1,0 +1,710 @@
+@import url('https://fonts.googleapis.com/css2?family=Expletus+Sans&family=PT+Sans&family=Ubuntu:wght@300&display=swap');
+
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: 0.3;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+html {
+    animation: fadeIn 2s ease;
+}
+
+body {
+    background: #6064b6;
+}
+
+
+.menu {
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    font-family: 'Expletus Sans', cursive;
+    font-weight: bold;
+    height: 70px;
+    width: 100%;
+    background: white;
+    font-size: 12px;
+    z-index: 2;
+}
+
+.menu img {
+    float: left;
+    padding-top: 15px;
+    padding-left: 30px;
+}
+
+.menu label {
+    font-family: 'Expletus Sans', cursive;
+    font-size: 20pt;
+    color: #b22222;
+    margin: 10px;
+    margin-left: -20px;
+    margin-top: 5px;
+    padding: 15px;
+    float: left;
+}
+
+.menu ul {
+    padding-top: 10px;
+    padding-left: 60%;
+    background: none;
+    display: block;
+}
+
+.menu ul li {
+    list-style: none;
+    display: inline-block;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    color: black;
+    margin-top: 5px;
+    margin-right: 20px;
+    transition: all 0.2s ease;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.menu ul li a:hover {
+    display: block;
+    color: #b22222;
+    border-bottom: 4px solid #b22222;
+    padding-bottom: 26px;
+}
+
+
+footer {
+    background-color: #b22222;
+    color: white;
+    width: 100%;
+    height: auto;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-size: auto;
+    overflow: hidden;
+    list-style-type: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+/*footer left*/
+
+.footer .imgbakso img {
+    padding-top: 1%;
+    float: left;
+    padding-left: 6.5%;
+}
+
+.footer h2 {
+    font-family: 'Expletus Sans', cursive;
+    margin-top: 30px;
+    padding-left: -0px;
+    float: left;
+    overflow: hidden;
+    display: inline;
+}
+
+/*footer right*/
+
+.footer h4 {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: large;
+    text-align: center;
+    overflow: hidden;
+    margin-left: 60%;
+    margin-top: -120px;
+}
+
+.footer .footer-content .logo {
+    list-style-type: none;
+    overflow: hidden;
+    margin-left: 74%;
+    padding-top: 10px;
+    justify-content: space-between;
+
+}
+
+.footer .footer-content .logo .shopee {
+    margin-top: 0px;
+    position: relative;
+    float: left;
+    overflow: hidden;
+}
+
+.footer .footer-content .logo .gojek {
+    margin-top: -0px;
+    position: relative;
+    float: left;
+    overflow: hidden;
+    margin-left: 18px;
+}
+
+.footer .footer-content .logo .grab {
+    margin-top: 10px;
+    margin-left: 11px;
+    position: relative;
+    float: left;
+    overflow: hidden;
+}
+
+.footer .footer-content .logo .grab:hover,
+.shopee:hover,
+.gojek:hover {
+    transform: scale(1.1);
+}
+
+.footer .footer-content .logo .grab:active,
+.shopee:active,
+.gojek:active {
+    transform: scale(1);
+}
+
+/*footer mid*/
+
+.footer .footer-content .location {
+    list-style-type: none;
+    overflow: hidden;
+    padding-top: -40%;
+    position: relative;
+    padding-bottom: 12px;
+    text-decoration: none;
+    font-family: 'Ubuntu', sans-serif;
+    justify-content: space-between;
+}
+
+.footer .footer-content .location p a {
+    margin-left: 19%;
+    text-indent: 10px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+}
+
+.footer .footer-content .location img:hover {
+    transform: scale(1.1);
+}
+
+.footer .footer-content .location img:active {
+    transform: scale(1);
+}
+
+
+/*first*/
+
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 3s ease-in-out;
+    z-index: 9999;
+}
+
+#loading-screen img {
+    max-width: 100px;
+    float: left;
+}
+
+#loading-screen label {
+    font-size: 25pt;
+    font-family: 'Expletus Sans', cursive;
+}
+
+.judul {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.isicontent {
+    display: none;
+}
+
+.slides {
+    width: 100%;
+    position: relative;
+    transition: opacity 0.5s ease-in-out;
+    display: flex;
+    overflow: hidden;
+}
+
+.slides .slide {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 20px;
+    transform: translateX(0%);
+    transition: transform 0.5s ease-in-out;
+}
+
+.slides .slide.active {
+    transform: translateX(0);
+}
+
+.slides .slide img {
+    width: 70%;
+    height: 80%;
+    animation: fadeIn 9s ease;
+    animation-duration: 1s;
+    border-radius: 20px;
+    padding-bottom: -20px;
+}
+
+.slides .navigation {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.slides .navigation .prev,
+.slides .navigation .next {
+    cursor: pointer;
+    padding: 16px;
+    font-weight: bold;
+    font-size: 20px;
+    color: black;
+    background: rgba(0, 0, 0, 0, 2);
+    user-select: none;
+    transition: 0.6s ease;
+}
+
+.slides .navigation .prev:hover,
+.slides .navigation .next:hover {
+    background-color: rgba(202, 194, 194, 0.3);
+    border-radius: 4px;
+}
+
+@media(max-width: 992px) {
+
+    .slides .navigation .prev,
+    .slides .navigation .next {
+        font-size: 18px;
+        padding: 13px;
+    }
+}
+
+@media(max-width: 768px) {
+
+    .slides .navigation .prev,
+    .slides .navigation .next {
+        font-size: 15px;
+        padding: 10px;
+    }
+}
+
+@media(max-width: 576px) {
+
+    .slides .navigation .prev,
+    .slides .navigation .next {
+        font-size: 12px;
+        padding: 7px;
+    }
+}
+
+@media(max-width: 360px) {
+
+    .slides .navigation .prev,
+    .slides .navigation .next {
+        font-size: 11px;
+        padding: 6px;
+    }
+}
+
+.judmenu {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.content-menu {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.img-1 img,
+.img-2 img,
+.img-3 img,
+.img-4 img,
+.img-5 img {
+    border-radius: 8px;
+}
+
+
+.img-1 label,
+.img-2 label,
+.img-3 label,
+.img-4 label,
+.img-5 label {
+    font-family: 'Expletus Sans', cursive;
+    font-weight: bold;
+}
+
+
+.image-link {
+    position: relative;
+    margin-top: -30px;
+    margin-left: 150px;
+    text-align: right;
+}
+
+.image-link a {
+    text-decoration: none;
+    background-color: #b22222;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+
+
+.butform {
+    text-align: center;
+    padding-top: 6%;
+    padding-bottom: 60px;
+    border-radius: 6px;
+}
+
+
+.butform button {
+    cursor: pointer;
+    padding-top: 90px;
+    padding: 15px 4%;
+    background-color: #b22222;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Expletus Sans', cursive;
+}
+
+.butform button:hover {
+    transform: scale(1.1);
+}
+
+.butform button:active {
+    transform: scale(0.9);
+}
+
+/*info*/
+
+.imginfo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-gap: 5px;
+    overflow: hidden;
+    padding-top: 10%;
+    padding-bottom: 5%;
+    padding-left: 70px;
+}
+
+.imginfo img {
+    width: 90%;
+    border-radius: 20px;
+}
+
+/*about*/
+
+.imgheader {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgheader img {
+    border-radius: 7px;
+}
+
+.imgowner {
+    padding-top: 50px;
+    float: left;
+    overflow: hidden;
+}
+
+.imgowner img {
+    border-radius: 6px;
+}
+
+.isi p {
+    text-indent: 30px;
+    padding-left: 45%;
+    padding-top: 50px;
+    padding-bottom: 15%;
+    font-family: 'Expletus Sans', cursive;
+}
+
+/*form*/
+
+.formpage {
+    font-family: 'Ubuntu', sans-serif;
+    margin: 0;
+    padding: 90px;
+    background-color: white;
+    color: black;
+}
+
+.form h2 {
+    font-family: 'Ubuntu', sans-serif;
+    padding-bottom: 10px;
+}
+
+.checkbox- {
+    margin-bottom: 10px;
+}
+
+.checkbox- label {
+    font-family: 'Expletus Sans', cursive;
+}
+
+.checkbox {
+    margin-right: 10px;
+}
+
+.input-box {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.checkbox:checked~.input-box {
+    display: block;
+}
+
+
+
+.alamatkirim input {
+    width: 39%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.kurir label {
+    display: bloc k;
+    margin-bottom: 10px;
+}
+
+.kurir select {
+    width: 41%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+.kurir option {
+    padding: 5px;
+    background-color: #f9f9f9;
+}
+
+.submit {
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.submit input {
+    padding: 10px 20px;
+    background-color: #b22222;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.submit input:hover {
+    transform: scale(1.05);
+}
+
+.submit input:active {
+    transform: scale(0.9);
+}
+
+.container {
+    text-align: center;
+    justify-content: space-between;
+    align-items: center;
+    width: max-content;
+    border-radius: 8px;
+    padding: 40px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1),
+        0 5px 12px -2px rgba(0, 0, 0, 0.1),
+        0 18px 36px -6px rgba(0, 0, 0, 0.1);
+}
+
+.container .title {
+    font-size: 20px;
+    font-family: 'Expletus Sans', cursive;
+}
+
+.container form input {
+    display: none;
+}
+
+.category {
+    text-align: center;
+    align-items: center;
+    margin-top: 10px;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.category label {
+    text-align: center;
+    height: 145px;
+    padding: 20px;
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 5px;
+    position: relative;
+}
+
+#COD:checked~.category .CODMetode,
+#linkaja:checked~.category .linkajaMetode,
+#shopeepay:checked~.category .shopeepayMetode,
+#gopay:checked~.category .gopayMetode,
+#dana:checked~.category .danaMetode {
+    box-shadow: 0px 0px 0px 1px #6064b6;
+}
+
+#COD:checked~.category .CODMetode .check,
+#linkaja:checked~.category .linkajaMetode .check,
+#shopeepay:checked~.category .shopeepayMetode .check,
+#gopay:checked~.category .gopayMetode .check,
+#dana:checked~.category .danaMetode .check {
+    display: block;
+}
+
+.category .imgName {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 10px;
+    padding: 65px;
+}
+
+.imgName span {
+    font-family: 'Ubuntu', sans-serif;
+    position: absolute;
+    top: 72%;
+    transform: translateY(-72%);
+}
+
+.imgName .imgContainer {
+    width: 50px;
+    display: grid;
+    grid-gap: 10px;
+    justify-content: center;
+    align-items: center;
+    top: 35%;
+    transform: translateY(-35%);
+}
+
+.COD img {
+    width: 80px;
+}
+
+.linkaja img {
+    width: 65px;
+}
+
+.shopeepay img {
+    width: 80px;
+}
+
+.gopay img {
+    width: 120px;
+}
+
+.dana img {
+    width: 70px;
+}
+
+.check {
+    display: none;
+    position: absolute;
+    top: -4px;
+    right: -4px;
+}
+
+.check i {
+    font-size: 18px;
+}
+
+/*php*/
+
+.total {
+    font-family: 'Expletus Sans', cursive;
+}
+
+.total p {
+    font-family: 'Expletus Sans', cursive;
+    font-size: 12px;
+    float: right;
+}
+
+.rincian-bayar {
+    font-family: 'Expletus Sans', cursive;
+    padding-bottom: 40px;
+}
+
+.rincian-bayar p {
+    float: right;
+    margin: 0;
+    font-family: 'Expletus Sans', cursive;
+}
+
+.total img {
+    border-radius: 5px;
+    font-family: 'Expletus Sans', cursive;
+}
+
+.infokirim {
+    font-family: 'Expletus Sans', cursive;
+}
+
+.infokirim p {
+    text-indent: 30px;
+    float: right;
+    margin: 0;
+    display: inline-block;
+}
